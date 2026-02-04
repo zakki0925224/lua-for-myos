@@ -19,7 +19,8 @@ AUX_O=	lauxlib.o
 
 # LIB_O=	lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o \
 # 	lutf8lib.o loadlib.o lcorolib.o linit.o
-LIB_O= lbaselib.o linit.o
+LIB_O=	lbaselib.o ldblib.o liolib.o loslib.o ltablib.o lstrlib.o \
+ 	lutf8lib.o loadlib.o lcorolib.o linit.o
 
 LUA_O=	lua.o
 
