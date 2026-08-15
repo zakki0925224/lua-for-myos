@@ -27,8 +27,16 @@ LUA_O=	lua.o
 ALL_O= $(CORE_O) $(AUX_O) $(LIB_O) $(LUA_O)
 
 TARGET= ../../apps/bin/lua
+LIBLUA_A= liblua.a
+
+AR=ar
 
 all: $(TARGET)
+
+liblua: $(LIBLUA_A)
+
+$(LIBLUA_A): $(CORE_O) $(AUX_O) $(LIB_O)
+	$(AR) rcs $@ $^
 
 $(TARGET): $(ALL_O) $(LIBC_A)
 	mkdir -p $(dir $@)
@@ -41,6 +49,6 @@ $(LIBC_A):
 	$(MAKE) -C $(LIBCDIR) app
 
 clean:
-	rm -f $(ALL_O) $(TARGET)
+	rm -f $(ALL_O) $(TARGET) $(LIBLUA_A)
 
-.PHONY: all clean
+.PHONY: all liblua clean
